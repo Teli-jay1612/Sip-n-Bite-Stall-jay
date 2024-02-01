@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip 'n' Bite Stall</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffe0b2;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffd54f;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #000;
+            margin: 0 10px;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #ffd54f;
+            padding: 10px 0;
+            text-align: center;
+            position: absolute;
+            bottom: 100%;
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .order-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Sip 'n' Bite</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+    </nav>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to "Sip 'n' Bite" food stall of students of class 8th.</p>
+    </section>
+    <section id="dining">
+        <h2>Dining</h2>
+  
+        <h3>Menu</h3>
+        <form id="orderForm" action="/place-order" method="post" onsubmit="return validateOrder()">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Order</th>
+                </tr>
+                <tr>
+                    <td>Mojito Flavours:</td>
+                    <td>Small ₹30<br>Large ₹40</td>
+                   <td>
+                        <input type="radio" id="mojito_kachha_aam" name="mojito_flavor" value="Kachha Aam"> Kachha Aam<br>
+                        <input type="radio" id="mojito_orange" name="mojito_flavor" value="Orange"> Orange<br>
+                        <input type="radio" id="mojito_pineapple" name="mojito_flavor" value="Pineapple"> Pineapple<br>
+                        <input type="radio" id="mojito_guava" name="mojito_flavor" value="Guava"> Guava<br>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="mojito_small" name="mojito_small" value="Small Mojito"> Small<br>
+                        <input type="checkbox" id="mojito_large" name="mojito_large" value="Large Mojito"> Large
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lemonade (Lemon soda)</td>
+                    <td>Small ₹20<br>Large ₹30</td>
+                    <td>
+                        <input type="checkbox" id="lemonade_small" name="lemonade_small" value="Small Lemonade"> Small<br>
+                        <input type="checkbox" id="lemonade_large" name="lemonade_large" value="Large Lemonade"> Large
+                    </td>
+                </tr>
+                <tr>
+                    <td>Simple Aloo Sandwiches</td>
+                    <td>₹70</td>
+    <td>
+        <input type="checkbox" id="mayonnaise" name="mayonnaise" value="Mayonnaise"> Mayonnaise (₹10)<br>
+        <input type="checkbox" id="tandoori_mayonnaise" name="tandoori_mayonnaise" value="Tandoori Mayonnaise"> Tandoori Mayonnaise (₹20)<br>
+        <input type="checkbox" id="butter" name="butter" value="Butter"> Butter (₹10)<br>
+        <input type="checkbox" id="cheese" name="cheese" value="Cheese"> Cheese (₹15)<br>
+        <input type="checkbox" id="double_cheese" name="double_cheese" value="Double Cheese"> Double Cheese (₹30)<br>
+        <input type="checkbox" id="schezwan" name="schezwan" value="Schezwan"> Schezwan (₹15)<br>
+        <input type="checkbox" id="peri_peri" name="peri_peri" value="Peri Peri"> Peri Peri (₹5)<br>
+    </td>
+                </tr>
+                <tr>
+                    <td>Tea</td>
+                    <td>Small ₹5<br>Large ₹10</td>
+                    <td>
+                        <input type="checkbox" id="tea_small" name="tea_small" value="Small Tea"> Small<br>
+                        <input type="checkbox" id="tea_large" name="tea_large" value="Large Tea"> Large
+                    </td>
+                </tr>
+                <tr>
+                    <td>Coffee</td>
+                    <td>Small ₹5<br>Large ₹10</td>
+                    <td>
+                        <input type="checkbox" id="coffee_small" name="coffee_small" value="Small Coffee"> Small<br>
+                        <input type="checkbox" id="coffee_large" name="coffee_large" value="Large Coffee"> Large
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Place Order">
+        </form>
+    </section>
+  
+    <script>
+        function validateOrder() {
+            if (!document.getElementById('mojito_small').checked &&
+                !document.getElementById('mojito_large').checked &&
+                !document.getElementById('lemonade_small').checked &&
+                !document.getElementById('lemonade_large').checked &&
+                !document.getElementById('sandwiches').checked &&
+                !document.getElementById('tea_small').checked &&
+                !document.getElementById('tea_large').checked &&
+                !document.getElementById('coffee_small').checked &&
+                !document.getElementById('coffee_large').checked) {
+                alert('Please select at least one item to order.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+   <footer>
+        <p>&copy; 2024 Sip 'n' Bite Stall. All rights reserved.</p>
+    </footer>
+</body>
+</html>
